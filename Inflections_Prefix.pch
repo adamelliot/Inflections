@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Inflections' target in the 'Inflections' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
