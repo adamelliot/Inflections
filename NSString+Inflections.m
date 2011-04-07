@@ -125,7 +125,7 @@ THE SOFTWARE.
  * Returns the plural form of the word in the string.
  */
 - (NSString *)pluralize {
-	NSString *ret = [self copy];
+	NSString *ret = [[self copy] autorelease];
 
 	if ([ret length] > 0 && [[NSString uncountableWords] indexOfObject:[self lowercaseString]] == NSNotFound) {
 		BOOL matched = NO;
