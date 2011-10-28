@@ -41,8 +41,8 @@ THE SOFTWARE.
 // All rules are assumed Global Case Insensitive.
 + (NSArray *)pluralRules {
 	static NSArray *_pluralRules = nil;
-	
-	if (_pluralRules == nil) 
+
+	if (_pluralRules == nil)
 		_pluralRules = [[NSArray arrayWithObjects:
 			[NSArray arrayWithObjects:@"(matr|vert|ind)(?:ix|ex)$", @"$1ices", nil],
 			[NSArray arrayWithObjects:@"(m)an$", @"$1en", nil],
@@ -72,7 +72,7 @@ THE SOFTWARE.
 
 + (NSArray *)singularRules {
 	static NSArray *_singularRules = nil;
-	
+
 	if (_singularRules == nil)
 		_singularRules = [[NSArray arrayWithObjects:
 			[NSArray arrayWithObjects:@"(database)s$", @"$1", nil],
@@ -111,7 +111,7 @@ THE SOFTWARE.
 
 + (NSArray *)nonTitlecasedWords {
 	static NSArray *_nonTitlecasedWords = nil;
-	
+
 	if (_nonTitlecasedWords == nil)
 		_nonTitlecasedWords = [[NSArray arrayWithObjects:
 			@"and",@"or",@"nor",@"a",@"an",@"the",@"so",@"but",@"to",@"of",@"at",
@@ -190,7 +190,7 @@ THE SOFTWARE.
 
 	str = [str stringByReplacingOccurrencesOfRegex:@"_" withString:@" "];
 	NSArray *strArr = [str componentsSeparatedByString:@" "];
-	
+
 	for (int x = 0; x <  [strArr count]; x++) {
 		NSString *word = [strArr objectAtIndex:x];
 		NSArray *subArr = [word componentsSeparatedByString:@"-"];
@@ -203,10 +203,10 @@ THE SOFTWARE.
 				[ret appendString:part];
 			else
 				[ret appendString:[part capitalize]];
-			
+
 			if (i < [subArr count] - 1) [ret appendString:@"-"];
 		}
-		
+
 		if (x < [strArr count] - 1) [ret appendString:@" "];
 	}
 
@@ -234,7 +234,7 @@ THE SOFTWARE.
 
 /**
  * Converts an underscored separated string into a CamelCasedString.
- * 
+ *
  * Changes '/' to '::' to convert paths to namespaces.
  */
 - (NSString *)camelize {
@@ -261,7 +261,7 @@ THE SOFTWARE.
 /**
  * Converts an underscored separated string into a camelCasedString with the
  * first letter lower case.
- * 
+ *
  * Changes '/' to '::' to convert paths to namespaces.
  */
 - (NSString *)camelizeWithLowerFirstLetter {
@@ -276,12 +276,12 @@ THE SOFTWARE.
 
 /**
  * Makes an underscored, lowercase form from the expression in the string.
- * 
+ *
  * Changes '::' to '/' to convert namespaces to paths.
- * 
+ *
  * As a rule of thumb you can think of +underscore+ as the inverse of +camelize+,
  * though there are cases where that does not hold:
- * 
+ *
  *   "SSLError".underscore.camelize # => "SslError"
  */
 - (NSString *)underscore {
@@ -290,7 +290,7 @@ THE SOFTWARE.
 	ret = [ret stringByReplacingOccurrencesOfRegex:@"([A-Z]+)([A-Z][a-z])" withString:@"$1_$2"];
 	ret = [ret stringByReplacingOccurrencesOfRegex:@"([a-z\\d])([A-Z])" withString:@"$1_$2"];
 	ret = [ret stringByReplacingOccurrencesOfString:@"-" withString:@"_"];
-	
+
 	return [ret lowercaseString];
 }
 
@@ -317,7 +317,7 @@ THE SOFTWARE.
 }
 
 /**
- * Creates a foreign key name from a class name without the underscore 
+ * Creates a foreign key name from a class name without the underscore
  * separating the id part.
  */
 - (NSString *)foreignKeyWithoutIdUnderscore {
@@ -327,7 +327,7 @@ THE SOFTWARE.
 /**
  * Turns a number into an ordinal string used to denote the position in an
  * ordered sequence such as 1st, 2nd, 3rd, 4th.
- * 
+ *
  * TODO: This should be moved to NSNumber most likely
  */
 - (NSString *)ordinalize {
