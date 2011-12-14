@@ -6,23 +6,23 @@
 
 /*
  Copyright (c) 2008-2010, John Engelhart
- 
+
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
- 
+
  * Redistributions of source code must retain the above copyright
  notice, this list of conditions and the following disclaimer.
- 
+
  * Redistributions in binary form must reproduce the above copyright
  notice, this list of conditions and the following disclaimer in the
  documentation and/or other materials provided with the distribution.
- 
+
  * Neither the name of the Zang Industries nor the names of its
  contributors may be used to endorse or promote products derived from
  this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -53,7 +53,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  
+
 #ifndef   REGEXKITLITE_VERSION_DEFINED
 #define   REGEXKITLITE_VERSION_DEFINED
 
@@ -73,7 +73,7 @@ extern "C" {
 #if !defined(RKL_BLOCKS) && defined(NS_BLOCKS_AVAILABLE) && (NS_BLOCKS_AVAILABLE == 1)
 #define RKL_BLOCKS 1
 #endif
-  
+
 #if       defined(RKL_BLOCKS) && (RKL_BLOCKS == 1)
 #define _RKL_BLOCKS_ENABLED 1
 #endif // defined(RKL_BLOCKS) && (RKL_BLOCKS == 1)
@@ -126,7 +126,7 @@ enum {
   RKLRegexEnumerationFastCapturedStringsXXX                  = 1UL << 11,
 };
 typedef NSUInteger RKLRegexEnumerationOptions;
-  
+
 #endif // RKLREGEXENUMERATIONOPTIONS_DEFINED
 
 #ifndef _REGEXKITLITE_H_
@@ -143,17 +143,17 @@ typedef NSUInteger RKLRegexEnumerationOptions;
 #else  // defined(NS_REQUIRES_NIL_TERMINATION)
 #define RKL_REQUIRES_NIL_TERMINATION
 #endif // defined(NS_REQUIRES_NIL_TERMINATION)
-  
+
 // This requires a few levels of rewriting to get the desired results.
 #define _RKL_CONCAT_2(c,d) c ## d
 #define _RKL_CONCAT(a,b) _RKL_CONCAT_2(a,b)
-  
+
 #ifdef    RKL_PREPEND_TO_METHODS
 #define RKL_METHOD_PREPEND(x) _RKL_CONCAT(RKL_PREPEND_TO_METHODS, x)
 #else  // RKL_PREPEND_TO_METHODS
 #define RKL_METHOD_PREPEND(x) x
 #endif // RKL_PREPEND_TO_METHODS
-  
+
 // If it looks like low memory notifications might be available, add code to register and respond to them.
 // This is (should be) harmless if it turns out that this isn't the case, since the notification that we register for,
 // UIApplicationDidReceiveMemoryWarningNotification, is dynamically looked up via dlsym().
@@ -183,7 +183,7 @@ extern NSString * const RKLICURegexReplacedStringErrorKey;
 extern NSString * const RKLICURegexReplacementStringErrorKey;
 extern NSString * const RKLICURegexSubjectRangeErrorKey;
 extern NSString * const RKLICURegexSubjectStringErrorKey;
-  
+
 @interface NSString (RegexKitLiteAdditions)
 
 + (void)RKL_METHOD_PREPEND(clearStringCache);

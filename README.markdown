@@ -21,7 +21,7 @@ The reverse of +pluralize+, returns the singular form of a word in a string.
 `- (NSString *)humanize;`
 
 Capitalizes the first word and turns underscores into spaces and strips a trailing "_id", if any. Like +titleize+, this is meant for creating pretty output.
- 
+
 `- (NSString *)titleize;`
 
 Capitalizes all words that are not part of the nonTitlecasedWords.
@@ -61,7 +61,7 @@ Creates a foreign key name from a class name.
 `- (NSString *)foreignKeyWithoutIdUnderscore;`
 
 Creates a foreign key name from a class name without the underscore  separating the id part.
-  
+
 `- (NSString *)ordinalize;`
 
 Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
