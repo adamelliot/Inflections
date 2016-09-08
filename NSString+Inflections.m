@@ -332,15 +332,15 @@ THE SOFTWARE.
  */
 - (NSString *)ordinalize {
 	NSInteger i = [self integerValue];
-	int mod100 = i % 100;
+	NSInteger mod100 = i % 100;
 
 	if (mod100 >= 11 && mod100 <= 13)
-		return [NSString stringWithFormat:@"%dth", i];
+		return [NSString stringWithFormat:@"%ldth", (long)i];
 	else switch (i % 10) {
-		case 1:		return [NSString stringWithFormat:@"%dst", i];
-		case 2:		return [NSString stringWithFormat:@"%dnd", i];
-		case 3:		return [NSString stringWithFormat:@"%drd", i];
-		default: 	return [NSString stringWithFormat:@"%dth", i];
+		case 1:		return [NSString stringWithFormat:@"%ldst", (long)i];
+		case 2:		return [NSString stringWithFormat:@"%ldnd", (long)i];
+		case 3:		return [NSString stringWithFormat:@"%ldrd", (long)i];
+		default: 	return [NSString stringWithFormat:@"%ldth", (long)i];
 	}
 
 	return @"";

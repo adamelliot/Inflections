@@ -966,8 +966,11 @@ exitNow:
   rkl_dtrace_addLookupFlag(lookupResultFlags, RKLErrorLookupFlag);
   if(cachedRegex != NULL) { rkl_dtrace_utf16ConversionCache(lookupResultFlags, cachedRegex->setToString, cachedRegex->setToRange.location, cachedRegex->setToRange.length, cachedRegex->setToLength); }
 #endif // _RKL_DTRACE_ENABLED
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-pointer-compare"
   if(cachedRegex != NULL) { cachedRegex->buffer = NULL; cachedRegex->setToRange = NSNotFoundRange; cachedRegex->lastFindRange = NSNotFoundRange; cachedRegex->lastMatchRange = NSNotFoundRange; }
   return(0UL);
+#pragma clang diagnostic pop
 }
 
 //  IMPORTANT!   This code is critical path code.  Because of this, it has been written for speed, not clarity.
@@ -1196,7 +1199,7 @@ static void rkl_handleDelayedAssert(id self, SEL _cmd, id exception) {
     else {
       id functionString = [exception objectForKey:@"function"], fileString = [exception objectForKey:@"file"], descriptionString = [exception objectForKey:@"description"], lineNumber = [exception objectForKey:@"line"];
       RKLCHardAbortAssert((functionString != NULL) && (fileString != NULL) && (descriptionString != NULL) && (lineNumber != NULL));
-      [[NSAssertionHandler currentHandler] handleFailureInFunction:functionString file:fileString lineNumber:(NSInteger)[lineNumber longValue] description:descriptionString];
+      [[NSAssertionHandler currentHandler] handleFailureInFunction:functionString file:fileString lineNumber:(NSInteger)[lineNumber longValue] description:@"%@", descriptionString];
     }
   }
 }
